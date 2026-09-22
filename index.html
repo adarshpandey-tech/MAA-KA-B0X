@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maa-Rasoi Express - Homemade Tiffin & Postpartum Care</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-amber-50 text-slate-800">
+
+  <!-- Header -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fa-solid fa-utensils text-2xl text-amber-600"></i>
+        <span class="text-xl font-bold text-amber-800">Maa-Rasoi Express</span>
+      </div>
+      <div class="space-x-2">
+        <button onclick="openAuthModal('buyer')" class="px-3 py-2 text-amber-700 font-semibold hover:bg-amber-100 rounded-lg text-sm">Customer Login</button>
+        <button onclick="openAuthModal('seller')" class="px-3 py-2 bg-amber-600 text-white rounded-lg font-semibold shadow hover:bg-amber-700 text-sm">Join as Home Cook</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="bg-amber-600 text-white py-12 px-4 text-center">
+    <h1 class="text-3xl md:text-5xl font-extrabold mb-3">Maa Ke Haath Ka Swaad & Poshan</h1>
+    <p class="text-base md:text-lg max-w-2xl mx-auto mb-6">Fresh, hygienic home-cooked meals for New Mothers & Busy Families. Flexible 1-Day Trial available.</p>
+    <a href="#plans" class="bg-white text-amber-800 font-bold px-6 py-3 rounded-full text-base shadow-lg hover:bg-amber-100 transition inline-block">Explore Tiffin Passes</a>
+  </header>
+
+  <!-- Plans Section -->
+  <section id="plans" class="max-w-7xl mx-auto py-12 px-4">
+    <h2 class="text-2xl font-bold text-center mb-8 text-slate-800">Choose Your Plan</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      
+      <!-- 1-Day Trial -->
+      <div class="bg-white p-5 rounded-2xl shadow border border-amber-200 text-center hover:shadow-lg transition">
+        <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full font-bold">1-DAY TRIAL</span>
+        <h3 class="text-xl font-bold mt-3 mb-1">1-Day Test Pass</h3>
+        <p class="text-slate-600 text-xs mb-3">Single-meal delivery to test quality & taste.</p>
+        <div class="text-2xl font-extrabold text-amber-600 mb-4">₹130 <span class="text-xs text-slate-500 font-normal">/ meal</span></div>
+        <button onclick="selectPlan('1-Day Trial')" class="w-full bg-amber-600 text-white py-2 rounded-lg font-semibold hover:bg-amber-700">Book 1-Day Trial</button>
+      </div>
+
+      <!-- 2-Day Pass -->
+      <div class="bg-white p-5 rounded-2xl shadow border border-amber-200 text-center hover:shadow-lg transition">
+        <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full font-bold">2-DAY MINI</span>
+        <h3 class="text-xl font-bold mt-3 mb-1">2-Day Weekend Pass</h3>
+        <p class="text-slate-600 text-xs mb-3">Great for weekend relaxation or trial.</p>
+        <div class="text-2xl font-extrabold text-amber-600 mb-4">₹240 <span class="text-xs text-slate-500 font-normal">/ 2 meals</span></div>
+        <button onclick="selectPlan('2-Day Pass')" class="w-full bg-amber-600 text-white py-2 rounded-lg font-semibold hover:bg-amber-700">Book 2-Day Pass</button>
+      </div>
+
+      <!-- 7-Day Pass -->
+      <div class="bg-white p-5 rounded-2xl shadow border border-amber-200 text-center hover:shadow-lg transition">
+        <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-bold">WEEKLY</span>
+        <h3 class="text-xl font-bold mt-3 mb-1">7-Day Weekly Pass</h3>
+        <p class="text-slate-600 text-xs mb-3">Flexible week plan with pause option.</p>
+        <div class="text-2xl font-extrabold text-amber-600 mb-4">₹770 <span class="text-xs text-slate-500 font-normal">/ week</span></div>
+        <button onclick="selectPlan('7-Day Pass')" class="w-full bg-amber-600 text-white py-2 rounded-lg font-semibold hover:bg-amber-700">Subscribe Weekly</button>
+      </div>
+
+      <!-- 30-Day Pass -->
+      <div class="bg-white p-5 rounded-2xl shadow border-2 border-amber-400 text-center hover:shadow-lg transition relative">
+        <span class="bg-amber-600 text-white text-xs px-3 py-1 rounded-full font-bold absolute -top-3 left-1/2 -translate-x-1/2">BEST VALUE</span>
+        <h3 class="text-xl font-bold mt-3 mb-1">30-Day Monthly</h3>
+        <p class="text-slate-600 text-xs mb-3">Maximum savings & priority delivery.</p>
+        <div class="text-2xl font-extrabold text-amber-600 mb-4">₹2,800 <span class="text-xs text-slate-500 font-normal">/ month</span></div>
+        <button onclick="selectPlan('30-Day Monthly')" class="w-full bg-amber-600 text-white py-2 rounded-lg font-semibold hover:bg-amber-700">Subscribe Monthly</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Login/OTP Modal -->
+  <div id="authModal" class="fixed inset-0 bg-black/50 hidden justify-center items-center z-50 px-4">
+    <div class="bg-white p-6 rounded-2xl max-w-md w-full shadow-2xl relative">
+      <button onclick="closeAuthModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark text-xl"></i></button>
+      <h3 id="modalTitle" class="text-xl font-bold mb-4">Login / Sign Up</h3>
+      
+      <form onsubmit="handleAuth(event)">
+        <label class="block text-sm font-semibold mb-1">Mobile Number</label>
+        <input type="tel" id="phone" placeholder="+91 9876543210" required class="w-full border p-2 rounded-lg mb-3 focus:outline-amber-600">
+        
+        <label class="block text-sm font-semibold mb-1">Email Address</label>
+        <input type="email" id="email" placeholder="name@example.com" required class="w-full border p-2 rounded-lg mb-4 focus:outline-amber-600">
+        
+        <button type="submit" class="w-full bg-amber-600 text-white py-2 rounded-lg font-bold hover:bg-amber-700">Get OTP & Login</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function openAuthModal(role) {
+      document.getElementById('modalTitle').innerText = role === 'seller' ? 'Home Cook Registration (Seller)' : 'Buyer Login';
+      document.getElementById('authModal').classList.remove('hidden');
+      document.getElementById('authModal').classList.add('flex');
+    }
+
+    function closeAuthModal() {
+      document.getElementById('authModal').classList.add('hidden');
+      document.getElementById('authModal').classList.remove('flex');
+    }
+
+    function selectPlan(planName) {
+      alert(`Selected ${planName}! Login to complete order.`);
+      openAuthModal('buyer');
+    }
+
+    function handleAuth(e) {
+      e.preventDefault();
+      const phone = document.getElementById('phone').value;
+      const email = document.getElementById('email').value;
+      alert(`OTP sent to ${phone} and confirmation email sent to ${email}`);
+      closeAuthModal();
+    }
+  </script>
+</body>
+</html>
